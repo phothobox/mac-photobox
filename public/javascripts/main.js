@@ -12,8 +12,8 @@ var canvasObjects = {
       strokeWidth: 5
     });
     canvas.add(redCircle);
-    
   },
+
   blueCircle: function () {
     var blueCircle = new fabric.Circle({
       top: 100,
@@ -25,6 +25,7 @@ var canvasObjects = {
     });
     canvas.add(blueCircle);
   },
+  
   greenCircle: function () {
     var greenCircle = new fabric.Circle({
       top: 100,
@@ -36,44 +37,50 @@ var canvasObjects = {
     });
     canvas.add(greenCircle);
   },
+
 //images
-imgCircle: function () {
-    fabric.Image.fromURL('../images/icon.png', function(oImg) {
-    // scale image down, and flip it, before adding it onto canvas
-    oImg.scale(0.5).setFlipX(true);
-    canvas.add(oImg);
-    });
-  },
+//FIXME:画像をいれると遅延が大きくなる不具合(廃止中)
+  imgCircle: function () {
+      fabric.Image.fromURL('../images/icon.png', function(oImg) {
+      // scale image down, and flip it, before adding it onto canvas
+      oImg.scale(0.5).setFlipX(true);
+      canvas.add(oImg);
+      canvas.renderAll();
+      });
+      
+    },
 
-//2016/12/01 start
-//textimage
-textCircle: function addText(e) {
-        
-      var custontxt=new fabric.IText('Tap and Type', {left: 100, top: 100, fontFamily: 'Comic Sans', fontSize: 30,  textShadow: 'rgba(0,0,0,0.3) 5px 5px 5px' });
-      canvas.add(custontxt);
-  },
- 
-//clearall
-clearall: function() {
-   
-  //clear all objects
-  canvas.clear();
-  //re-rendering
-  //canvas.renderAll.bind(canvas);
-  },
-//2016/12/01 end
+  //2016/12/01 start
+  //textimage
+  textCircle: function addText(e) {
+          
+        var custontxt=new fabric.IText('Tap and Type', {left: 100, top: 100, fontFamily: 'Comic Sans', fontSize: 30,  textShadow: 'rgba(0,0,0,0.3) 5px 5px 5px' });
+        canvas.add(custontxt);
+    },
+  
+  //clearall
+  //FIXME:同期されなくなり不安定(廃止中)
+  clearall: function() {
+    
+    canvas.clear();
+    canvas.renderAll.bind(canvas);
+    },
 
-drawCircle: function () {
-    canvas.isDrawingMode = true;
+  //2016/12/01 end
+  //drawCircle
+  //FIXME:これなんの関数か不明
+  drawCircle: function () {
+      canvas.isDrawingMode = true;
 
-    canvas.freeDrawingColor = "red";
+      canvas.freeDrawingColor = "red";
 
-    canvas.freeDrawingLineWidth = 5;
+      canvas.freeDrawingLineWidth = 5;
 
-    canvas.renderAll();
+      canvas.renderAll();
 
-    canvas.calcOffset();
-  }
+      canvas.calcOffset();
+    }
+  
 };
 
 
@@ -89,9 +96,9 @@ $(document).ready(function () {
 
 var canvas = new fabric.Canvas('canvas');
 
-//キャンバスの背景を設定/////////////////////////
+//キャンバスの背景を設定
 /*
-//背景色バージョン
+//色バージョン
 var canvas = new fabric.Canvas('canvas', {
   backgroundColor: 'rgb(100,100,200)',
   selectionColor: 'blue',
@@ -99,15 +106,16 @@ var canvas = new fabric.Canvas('canvas', {
  
 });
 */
-//jail風バージョン
+//写真バージョン
 //canvas.setBackgroundImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
-//imagesより
+
+//imagesバージョン
   canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {
 
 });
-/////////////////////////////////////////////
 
 
+//描画モードオンオフ
 $('#draw-mode').on('click', function () {
   console.log(this);
   canvas.isDrawingMode = !canvas.isDrawingMode;
@@ -117,7 +125,7 @@ $('#draw-mode').on('click', function () {
 
 //2016/12/02 start
 //change background
-//同期がされなくなるので背景変化は今は使わない
+//FIXME:同期がされなくなるので背景変化は今は使わない
 /*
 $('#draw-bg').on('click', function () {
    canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {});
@@ -145,9 +153,9 @@ document.addEventListener('keydown', function (event) {
 canvasObjects.redCircle();
 canvasObjects.blueCircle();
 canvasObjects.greenCircle();
-canvasObjects.imgCircle();
-//2016/12/01 
+//2016/12/02 start
+//canvasObjects.imgCircle();
 canvasObjects.textCircle();
-canvasObjects.clearall();
-canvasObjects.drawCircle();
-
+//canvasObjects.clearall();
+//canvasObjects.drawCircle();
+//2016/12/02 end
