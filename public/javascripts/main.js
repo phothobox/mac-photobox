@@ -102,9 +102,9 @@ var canvas = new fabric.Canvas('canvas', {
 //jail風バージョン
 //canvas.setBackgroundImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
 //imagesより
-/*  canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {
+  canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {
 
-});*/
+});
 /////////////////////////////////////////////
 
 
@@ -115,12 +115,15 @@ $('#draw-mode').on('click', function () {
   if (!canvas.isDrawingMode) { $(this).html('Draw Mode: Off'); }
 });
 
-//2016/12/01 start
+//2016/12/02 start
 //change background
+//同期がされなくなるので背景変化は今は使わない
+/*
 $('#draw-bg').on('click', function () {
    canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {});
 });
-//2016/12/01 end
+*/
+//2016/12/02 end
 
 
 function addObject (obj) {
