@@ -1,0 +1,23 @@
+{
+  "name": "shareboard",
+  "version": "1.0.0",
+  "description": "A collaborative drawing story board using Node.js, React.js and Socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "react.js",
+    "node.js",
+    "socket.io",
+    "canvas",
+    "fabric.js"
+  ],
+  "author": "franklintarter@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "socket.io": "^1.3.7"
+  }
+}
