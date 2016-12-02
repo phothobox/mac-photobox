@@ -54,7 +54,13 @@ var canvasObjects = {
   //textimage
   textCircle: function addText(e) {
           
-        var custontxt=new fabric.IText('Tap and Type', {left: 100, top: 100, fontFamily: 'Comic Sans', fontSize: 30,  textShadow: 'rgba(0,0,0,0.3) 5px 5px 5px' });
+        var custontxt=new fabric.IText('Tap and Type', {
+          left: 100, 
+          top: 100, 
+          fontFamily: 'Comic Sans', 
+          fontSize: 30,  
+          textShadow: 'rgba(0,0,0,0.3) 5px 5px 5px'
+         });
         canvas.add(custontxt);
     },
   
@@ -79,11 +85,20 @@ var canvasObjects = {
       canvas.renderAll();
 
       canvas.calcOffset();
-    }
+    },
+
+    //2016/12/03  start
+  //setBackgroundImageCB
+  //NOTE:canvasObjects.setBackgroundImageCB();なくても動きます
+  setBackgroundImageCB: function () {
+    fabric.Image.fromURL('../images/moroco.png', function(img) {
+      canvas.setBackgroundImage(img);
+      canvas.renderAll();
+    });
+  },
+  //2016/12/03  end
   
 };
-
-
 
 $(document).ready(function () {
   var buttons = [];
@@ -110,9 +125,7 @@ var canvas = new fabric.Canvas('canvas', {
 //canvas.setBackgroundImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
 
 //imagesバージョン
-  canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {
-
-});
+// canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {});
 
 
 //描画モードオンオフ
@@ -159,3 +172,6 @@ canvasObjects.textCircle();
 //canvasObjects.clearall();
 //canvasObjects.drawCircle();
 //2016/12/02 end
+//2016/12/03 start
+canvasObjects.setBackgroundImageCB();
+//2016/12/03 end
