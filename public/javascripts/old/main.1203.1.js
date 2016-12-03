@@ -127,6 +127,14 @@ var canvas = new fabric.Canvas('canvas', {
 
 //1203 start
 //描画モードオンオフ
+/*標準
+$('#draw-mode').on('click', function () {
+  console.log(this);
+  canvas.isDrawingMode = !canvas.isDrawingMode;
+  if (canvas.isDrawingMode) { $(this).html('Draw Mode: On'); }
+  if (!canvas.isDrawingMode) { $(this).html('Draw Mode: Off'); }
+});
+*/
 //Blue
 $('#draw-mode1').on('click', function () {
   console.log(this);
