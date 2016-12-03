@@ -1,12 +1,35 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ 
+  background-image: url("../images/lace.png");
+  background-repeat: repeat-x;
+ 
 }
 
-a {
-  color: #00B7FF;
+/*ペンの背景*/
+#pens {
+
+background-image: url("../images/star.gif");
+background-repeat: repeat-x;
+
 }
-/*1203*/
+/*ペンボタン*/
+#draw-mode1{
+  color: blue;
+}
+#draw-mode2{
+  color: green;
+}
+#draw-mode3{
+  color: red;
+}
+#draw-mode4{
+  color: black;
+}
+
+/*NO EFFECT NOW*/
+/*ペンのサムネイル用*/
 ul {
     margin: 0;
     padding: 0;
