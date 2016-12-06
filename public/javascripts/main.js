@@ -94,7 +94,6 @@ var canvasObjects = {
       canvas.renderAll();
     });
   },
-  
 };
 
 $(document).ready(function () {
@@ -106,7 +105,20 @@ $(document).ready(function () {
   $('#canvas-objects').append(buttons);
 });
 
+
 var canvas = new fabric.Canvas('canvas');
+
+///2016/12/06
+  //save canvas
+  //FIXME:新しいタブで開くので手間、androidに不向き  
+$("#canvas2png").click(function(){
+
+    canvas.isDrawingMode = false;
+    if(!window.localStorage){alert("This function is not supported by your browser."); return;}
+    window.open(canvas.toDataURL('png'));
+
+});
+
 
 //キャンバスの背景を設定
 //NOTE:使用停止中
@@ -129,6 +141,8 @@ function addObject (obj) {
   canvasObjects[obj]();
 }
 
+
+
 // Delete Button
 window.deleteObject = function () {
   canvas.getActiveObject().remove();
@@ -150,5 +164,6 @@ canvasObjects.textCircle();
 //canvasObjects.setBackgroundImageCB();
 //canvasObjects.blueCircle();
 //canvasObjects.greenCircle();
+
 
 
