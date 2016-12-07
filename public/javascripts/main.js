@@ -143,9 +143,9 @@ document.addEventListener('keydown', function (event) {
 
 
 //loadのさいにはじめから表示しておく場合
-canvasObjects.redCircle();
-canvasObjects.blueCircle();
-canvasObjects.textCircle();
+//canvasObjects.redCircle();
+//canvasObjects.blueCircle();
+//canvasObjects.textCircle();
 //canvasObjects.imgCircle();
 //canvasObjects.setBackgroundImageCB();
 //canvasObjects.blueCircle();

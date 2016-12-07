@@ -14,20 +14,68 @@
   </head>
   <body>
       <!--1203 add pens start -->
+      
   <div id="pens">    
-      <label>青ペン   </label><button id="draw-mode1">Draw Mode Blue: Off</button><br />
-      <label>緑ペン   </label><button id="draw-mode2">Draw Mode Green: Off</button><br />
-      <label>赤ペン   </label><button id="draw-mode3">Draw Mode Red: Off</button><br />
-      <label>黒ペン   </label><button id="draw-mode4">Draw Mode Shadow: Off</button><br />
-  </div>    
+      <label></label><button id="draw-mode1">Off</button>
+      <label></label><button id="draw-mode2">Off</button>
+      <label></label><button id="draw-mode3">Off</button>
+      <label></label><button id="draw-mode4">Off</button>
+      <label></label><button id="draw-mode5">Off</button>
+      <label></label><button id="draw-mode6">Off</button><br />
+  </div>
+  
+
+
+                        <!-- タブメニュー -->
+                            <ul id="tab-menu">
+                                <li class="active">写真スタンプ</li>
+                                <li>イラストスタンプ</li>
+                                <li>背景</li>
+                            </ul>
+                            <!-- タブの中身 -->
+                                <div id="tab-box">
+                                    <!-- タブ1 -->
+                                    <div class="active">      
+                                            <span class="cut"><img src="images/sun.png" alt="image5" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/redsun.png" alt="image6" class="cut_image" /></span>         
+                                    </div>
+                                    <!-- タブ2 -->
+                                    <div>
+                                            <span class="cut"><img src="images/pin1.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/pin2.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/pin3.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/becc.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/mbecc.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/pecc.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/wow.png" alt="image3" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/nice.png" alt="image7" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/sframe1.png" alt="image2" class="cut_image" /></span>
+                                            <span class="cut"><img src="images/sframe2.png" alt="image2" class="cut_image" /></span>
+                                    </div>
+                                    <!-- タブ3 -->
+                                    <div>      
+                                    <form>
+                                            <input type="radio" name="bg" value="bg1.jpg" >アーガイル
+                                            <input type="radio" name="bg" value="bg2.jpg" >ステンドグラス
+                                            <input type="radio" name="bg" value="bg0.jpg"checked>コルク
+                                    </form>  
+                                    </div>
+
+                                </div>
+
+
+
       <!--1203 end-->
-      <label>tools</label><span id="canvas-objects"></span>
-      <canvas id='canvas' width='800' height='800' />
+      <label>ツール</label><span id="canvas-objects"></span>
+      <canvas id='canvas' width='500' height='500' />
   
       <script src="javascripts/main.js"></script>
        <!--1203-->
       <script src="javascripts/pen.js"></script>
       <script src="javascripts/socket.js"></script>
+                <script src="javascripts/fabric.js"></script>
+                <script src="javascripts/tab.js"></script>
+                <link href="stylesheets/photobox.css" rel="stylesheet" type="text/css" />
       
      
     
