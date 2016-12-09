@@ -98,7 +98,10 @@ var canvasObjects = {
       canvas.renderAll();
     });
   },
+<<<<<<< HEAD
 */ 
+=======
+>>>>>>> d8a5ed5511fc406f34d3bd78397ff260d7805a92
 };
 
 $(document).ready(function () {
@@ -110,7 +113,41 @@ $(document).ready(function () {
   $('#canvas-objects').append(buttons);
 });
 
+
 var canvas = new fabric.Canvas('canvas');
+
+///2016/12/06
+  //save local canvas
+  //FIXME:新しいタブで開くので手間、androidに不向き  
+$("#canvas2png").click(function(){
+
+    canvas.isDrawingMode = false;
+    if(!window.localStorage){alert("This function is not supported by your browser."); return;}
+    //imgdata = canvas.toDataURL('png');  
+    // imgdata = imgdata.replace('data:image/png;base64,', '');   
+    window.open(canvas.toDataURL('png'));
+    
+});
+///2016/12/06
+  //save remote canvas
+  //NOTE:送信後のサーバ保存処理を書いてない
+  //FIXME:saveimgがnotfoundになるのでsaveimgが検証できていない
+  //saveimg参照リンク:http://qiita.com/PianoScoreJP/items/8b477a2bb09dd1db7826
+$("#canvasremote").click(function () {
+      data = canvas.toDataURL();
+      alert("Post Processing" + data);
+      $.ajax({
+          type: 'post',
+        //  url: 'pictures/create',
+          url: '/saveimg',
+          data: {picture : data},
+          success: function(data){
+            //$("#delete_button").click();
+            alert("You success!");
+          }
+      });
+    });
+
 
 //キャンバスの背景を設定
 //NOTE:使用停止中
@@ -123,15 +160,11 @@ var canvas = new fabric.Canvas('canvas', {
  
 });
 */
-//写真バージョン
-//canvas.setBackgroundImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
-
-//imagesバージョン
-// canvas.setBackgroundImage('../images/moroco.png', canvas.renderAll.bind(canvas), {});
-
 function addObject (obj) {
   canvasObjects[obj]();
 }
+
+
 
 // Delete Button
 window.deleteObject = function () {
@@ -154,5 +187,6 @@ document.addEventListener('keydown', function (event) {
 //canvasObjects.setBackgroundImageCB();
 //canvasObjects.blueCircle();
 //canvasObjects.greenCircle();
+
 
 
