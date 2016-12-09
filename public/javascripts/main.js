@@ -98,10 +98,7 @@ var canvasObjects = {
       canvas.renderAll();
     });
   },
-<<<<<<< HEAD
-*/ 
-=======
->>>>>>> d8a5ed5511fc406f34d3bd78397ff260d7805a92
+*/
 };
 
 $(document).ready(function () {
