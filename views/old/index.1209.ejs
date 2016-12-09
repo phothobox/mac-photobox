@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%=data[1].imgpath %></title>
+    <!--1203 add css -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.0/fabric.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    
+
+  </head>
+  <body>
+  
+      <!--1203 add pens start -->
+  <div id="pens">    
+      <label>青ペン   </label><button id="draw-mode1">Draw Mode Blue: Off</button><br />
+      <label>緑ペン   </label><button id="draw-mode2">Draw Mode Green: Off</button><br />
+      <label>赤ペン   </label><button id="draw-mode3">Draw Mode Red: Off</button><br />
+      <label>黒ペン   </label><button id="draw-mode4">Draw Mode Shadow: Off</button><br />
+      <label>黒ペン   </label><button id="draw-mode5">Draw Mode Shadow: Off</button><br />
+  </div>    
+      <!--1203 end-->
+      <label>tools</label><span id="canvas-objects"></span>
+      <% for(var i=0; i < data.length; i++){ %>
+            <span class="cut"><img src="images/<%= data[i].imgpath %>" alt="images" class="cut_image" /></span>
+      <% } %>
+
+      <canvas id='canvas' width='800' height='800' />
+ 
+      <script src="javascripts/main.js"></script>
+       <!--1203-->
+      <script src="javascripts/pen.js"></script>
+      <script src="javascripts/socket.js"></script>
+     
+     
+    
+      
+  </body>
+</html>

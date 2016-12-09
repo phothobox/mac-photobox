@@ -1,0 +1,86 @@
+
+
+
+
+/* タブメニュー */
+#tab-menu {
+ 
+  list-style: none;
+  margin: 0px; /*メニューの端からの余白*/
+}
+#tab-menu li {
+  
+  vertical-align: top;
+  padding: 5px 25px;
+  
+  background: #eee;
+}
+#tab-menu li.active {
+  background: #000;
+  color: #fff;
+}
+
+/* タブの中身 */
+#tab-box {
+  
+  height: 550px;	/*タブの中身高さ*/
+	width: 550px;		/*タブの中身横幅*/
+  padding: 25px;  /*内側余白*/
+  /*
+  border: 5px solid #000;
+  */
+}
+#tab-box div {
+  display: none;
+}
+#tab-box div.active {
+  display: block;
+}
+
+.cut {
+	position: relative;
+	float: left;
+	overflow: hidden;	/*不要部分の切り取り*/
+	height: 100px;		/*正方形にしたい高さサイズ*/
+	width: 100px;		/*正方形にしたい横幅サイズ*/
+	display: block;		/*spanなのでblock要素にする*/
+	margin:0 10px 10px 0;
+	border: 8px solid #ccc; 
+}
+
+/*背景のサムネイル化用*/
+.others {
+	position: relative;
+	float: left;
+	overflow: hidden;	/*不要部分の切り取り*/
+	height: 100px;		/*正方形にしたい高さサイズ*/
+	width: 100px;		/*正方形にしたい横幅サイズ*/
+	display: block;		/*spanなのでblock要素にする*/
+	margin:0 10px 10px 0;
+	border: 8px solid #ccc; 
+}
+
+
+
+
+
+.cut_image {			/*縦・横の画像でも一応見れるように微妙に調整されています。*/
+	display: block;
+	height: 150px;
+	position: absolute;
+	/*切り取りポジション*/
+  left: -10px;
+  top: -15px;
+}
+body{
+  min-width: 550px;
+}
+
+/*
+.clearfix {
+
+ padding: 25px; 
+
+
+}
+*/

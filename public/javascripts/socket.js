@@ -30,7 +30,7 @@ io.on('new-user', function (id) {
   var data = JSON.stringify(canvas);
   io.emit('update-user', data, id);
 });
-
+//Functions
 function stringifyCanvas () {
   return JSON.stringify(canvas);
 }
