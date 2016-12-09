@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas</title>
+
+<style>
+body {
+    margin: 20px;
+}
+canvas {
+    top: 20px;
+    left: 20px;
+    border: 5px solid #ccc;
+}
+#button {
+    position: relative;
+    top: -55px;
+    left: 345px;
+}
+#save {
+    font-size: 120%;
+    width: 80px;
+    height: 50px;
+}
+#clear {
+    font-size: 120%;
+    width: 80px;
+    height: 50px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li {
+    cursor:pointer;
+    cursor:hand;
+    display:inline-block;
+    border: 1px solid #000;
+    width: 50px;
+    height: 50px;
+}
+</style>
+</head>
+<body>
+      
+<!--<canvas id="world" width="500" height="400" style="background-color:yellow;">-->
+
+<section>
+<div id="world" style="position:relative; width:500px; height:400px">
+<!-- 背景レイヤ -->
+<canvas id="layer1" class="draggable-box"
+style="z-index:2;
+position:absolute;
+left:0px;
+top:0px;
+" height="300px" width="400">
+This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+<!-- スタンプレイヤ -->
+<canvas  id="layer2" class="draggable-box"
+style="z-index:4;
+position:absolute;
+left:0px;
+top:0px;
+" height="300px" width="400"></canvas>
+<!--  -->
+<canvas id="layer3" class="draggable-box"
+style="z-index:3; 
+position:absolute;
+left:0px;
+top:0px;
+" height="300px" width="400"></canvas>
+<!-- ドラッグレイヤ -->
+<canvas id="layer4" class="draggable-box"
+style="z-index:2;
+position:absolute;
+left:0px;
+top:0px;
+" height="300px" width="400">
+This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+<!-- FabricJS    -->
+<canvas id="layer5" class="draggable-box"
+style="z-index:100;
+position:absolute;
+left:0px;
+top:0px;
+" height="300px" width="400"></canvas>
+</div>
+</section>
+
+
+<ul>
+<li style="background-color:#000"></li>
+<li style="background-color:#f00"></li>
+<li style="background-color:#0f0"></li>
+<li style="background-color:#00f"></li>
+<li style="background-color:#ff0"></li>
+<li style="background-color:#fff"></li>
+</ul>
+<div id="button">
+<input type="button" id="save" value="保存" />
+<input type="button" id="clear" value="消去" />
+</div>
+
+ <div class="parallel"><p>
+      <button id="chindex2" type="button">すたんぷを最前面</button>
+      <button id="chindex4" type="button">がぞうを最前面</button>
+      <button id="mouth_button" type="button" class="btn btn-primary">だえんすたんぷ</button> 
+      <button id="face_button" type="button" class="btn btn-primary">まるすたんぷ</button> 
+      <form>
+        <input type="radio" name="bg" value="bg1.jpg" checked>アーガイル
+        <input type="radio" name="bg" value="bg2.jpg" >ステンドグラス
+        <input type="radio" name="bg" value="bg0.jpg"checked>コルク
+      </form>
+ </div>
+ 
+ 
+ 
+ <!-- タブメニュー -->
+      <ul id="tab-menu">
+        <li class="active">写真スタンプ</li>
+        <li>イラストスタンプ</li>
+        <li>背景</li>
+        <li>しさく</li>
+       
+ 
+
+
+
+
+      </ul>
+
+      <!-- タブの中身 -->
+      <div id="tab-box">
+        <!-- タブ1 -->
+        <div class="active">      
+                <span class="cut"><img src="images/sun.png" alt="image5" class="cut_image" /></span>
+                <span class="cut"><img src="images/redsun.png" alt="image6" class="cut_image" /></span>         
+        </div>
+        <!-- タブ2 -->
+        <div>
+                <span class="cut"><img src="images/pin1.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/pin2.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/pin3.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/becc.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/mbecc.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/pecc.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/wow.png" alt="image3" class="cut_image" /></span>
+                <span class="cut"><img src="images/nice.png" alt="image7" class="cut_image" /></span>
+                <span class="cut"><img src="images/sframe1.png" alt="image2" class="cut_image" /></span>
+                <span class="cut"><img src="images/sframe2.png" alt="image2" class="cut_image" /></span>
+        </div>
+        <!-- タブ3 -->
+        <div>      
+          <form>
+                <input type="radio" name="bg" value="bg1.jpg" >アーガイル
+                <input type="radio" name="bg" value="bg2.jpg" >ステンドグラス
+                <input type="radio" name="bg" value="bg0.jpg"checked>コルク
+          </form>  
+        </div>
+        <!-- タブ4 -->
+        <div>
+            <% for(var i=0; i < data.length; i++){ %>
+            <span class="cut"><img src="images/<%= data[i].imgpath %>" alt="image3" class="cut_image" /></span>
+            <% } %>
+        </div>
+      </div>
+    
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="javascripts/js1/stamp.js"></script>
+    <script src="javascripts/js1/drg.js"></script>
+    <script src="javascripts/js1/drgp.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.6/fabric.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script src="javascripts/js1/chindex2.js"></script>
+    <script src="javascripts/js1/chindex4.js"></script>
+    <script src="javascripts/js1/bgchange.js"></script>
+    <script type="text/javascript" src="javascripts/js1/tab.js"></script>
+    <script src="javascripts/js1/fabric.js"></script>
+    
+    <link href="stylesheets/tab.css" rel="stylesheet" type="text/css" />  
+<script type="text/javascript">
+
+
+$(function() {
+    var offset = 5;
+    var fromX;
+    var fromY;
+    var drawFlag = false;
+    var canvas = $('canvas').get(0);
+    //if (canvas.getContext) {
+      //  var context = canvas.getContext('2d');
+   // }
+    var context = $("canvas").get(0).getContext('2d');
+    var socket = io.connect('http://localhost:3000');
+ 
+    // サーバからメッセージ受信
+    socket.on('send user', function (msg) {
+        context.strokeStyle = msg.color;
+        context.lineWidth = 2;
+        context.beginPath();
+        context.moveTo(msg.fx, msg.fy);
+        context.lineTo(msg.tx, msg.ty);
+        context.stroke();
+        context.closePath(); 
+    });
+ 
+    socket.on('clear user', function () {
+        context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
+    });
+ 
+    $('canvas').mousedown(function(e) {
+        drawFlag = true;
+        fromX = e.pageX - $(this).offset().left - offset;
+        fromY = e.pageY - $(this).offset().top - offset;
+        return false;  // for chrome
+    });
+ 
+    $('canvas').mousemove(function(e) {
+        if (drawFlag) {
+            draw(e);
+        }
+    });
+ 
+    $('canvas').on('mouseup', function() {
+        drawFlag = false;
+    });
+ 
+    $('canvas').on('mouseleave', function() {
+        drawFlag = false;
+    });
+ 
+    $('li').click(function() {
+        context.strokeStyle = $(this).css('background-color');
+    });
+ 
+    $('#clear').click(function(e) {
+        socket.emit('clear send');
+        e.preventDefault();
+        context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
+    });
+ 
+    function draw(e) {
+        var toX = e.pageX - $('canvas').offset().left - offset;
+        var toY = e.pageY - $('canvas').offset().top - offset;
+        context.lineWidth = 2;
+        context.beginPath();
+        context.moveTo(fromX, fromY);
+        context.lineTo(toX, toY);
+        context.stroke();
+        context.closePath();
+ 
+        // サーバへメッセージ送信
+        socket.emit('server send', { fx:fromX, fy:fromY, tx:toX, ty:toY, color:context.strokeStyle });
+        fromX = toX;
+        fromY = toY;
+    }
+ 
+    $('#save').click(function() {
+        var d = $("canvas")[0].toDataURL("image/jpeg");
+        d = d.replace("image/jpeg", "image/octet-stream");
+        window.open(d,"save");
+    });
+});
+</script>
+</body>
+</html>

@@ -125,8 +125,7 @@ function addObject (obj) {
 //2016/12/07
 //imgCircle用にimg情報を取得
 $('.cut').click(function() {
-    
-    var img = $(this).find("img").attr("src"); 
+    var img = $(this).parent().find("img").attr("src"); alert(img);
       canvasObjects.imgCircle(img);
     });
 
