@@ -2,6 +2,8 @@
 
 var io = io.connect();
 
+
+
 // Socket Events
 canvas.on('object:moving', function () {
   io.emit('refresh', stringifyCanvas());
